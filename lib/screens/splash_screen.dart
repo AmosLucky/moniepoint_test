@@ -1,7 +1,10 @@
-import 'dart:async';
+
 
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/app_variables.dart';
+
+
+import '../repos/navigatore.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,8 +15,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
-  var controler;
-  var animation;
+  dynamic controler;
+  dynamic animation;
   bool isError = false;
 
   void initState() {
@@ -22,13 +25,7 @@ class _SplashScreenState extends State<SplashScreen>
     animation = Tween(begin: 0.0, end: 1.0).animate(controler);
     controler.forward();
 
-    Timer(Duration(seconds: 3), () {
-      //UserRepo().signInWithId(String user_id, context);
-      
-    });
-
-    //Timer(Duration(seconds: 4), () {});
-    // TODO: implement initState
+    Navigators().finishSpashScreen(context);
     super.initState();
   }
 

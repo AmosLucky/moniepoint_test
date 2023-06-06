@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moniepoint_test/repos/util_repo.dart';
 import 'package:moniepoint_test/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -18,11 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [],
+      providers: [
+                ChangeNotifierProvider(create: (_) => UtilRepo()),
+
+      ],
       child: MaterialApp(
         navigatorKey: navigatorKey,
         title: appName,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
