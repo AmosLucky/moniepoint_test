@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moniepoint_test/repos/product_repo.dart';
 import 'package:moniepoint_test/repos/util_repo.dart';
 import 'package:moniepoint_test/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-                ChangeNotifierProvider(create: (_) => UtilRepo()),
+       ChangeNotifierProvider(create: (_) => ProductRepo()),
 
       ],
       child: MaterialApp(
