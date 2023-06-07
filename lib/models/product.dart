@@ -18,8 +18,8 @@ class Product {
   dynamic rating;
   dynamic ratingCount;
   String description;
-  int sold;
-  int reviews;
+  dynamic sold;
+  dynamic reviews;
   String brand;
   String color;
   String material;
