@@ -1,9 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/colors.dart';
+import 'package:moniepoint_test/models/product.dart';
 import 'package:moniepoint_test/repos/product_repo.dart';
 import 'package:provider/provider.dart';
 
+import '../repos/util_repo.dart';
+import '../screens/product_details.dart';
 import 'menu_item.dart';
 
 class CarouselHead extends StatefulWidget {
@@ -36,10 +39,8 @@ class _CarouselHeadState extends State<CarouselHead> {
             .fetchFeaturedProduct()
             .map((item) => InkWell(
                   onTap: () {
-                    // var route = MaterialPageRoute(
-                    //     builder: (BuildContext) =>
-                    //         ServiceDetails(serviceModel: item));
-                    // Navigator.push(context, route);
+                    UtilRepo().navigateToScreen(context,
+                        ProductDetails(product: Product.fromJson(item)));
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
@@ -56,10 +57,8 @@ class _CarouselHeadState extends State<CarouselHead> {
                       child: MaterialButton(
                         //shape: const StadiumBorder(),
                         onPressed: () {
-                          // var route = MaterialPageRoute(
-                          //     builder: (BuildContext) =>
-                          //         ServiceDetails(serviceModel: item));
-                          // Navigator.push(context, route);
+                          UtilRepo().navigateToScreen(context,
+                              ProductDetails(product: Product.fromJson(item)));
                         },
                         child: Text("Book Now"),
                         textColor: whiteColor,

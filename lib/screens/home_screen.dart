@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/repos/product_repo.dart';
-import 'package:moniepoint_test/widgets/price_widget.dart';
 import 'package:moniepoint_test/widgets/product_title.dart';
 
 import '../constants/colors.dart';

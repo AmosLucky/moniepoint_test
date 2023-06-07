@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/colors.dart';
-import 'package:moniepoint_test/widgets/product_category.dart';
 import 'package:moniepoint_test/widgets/rating_widget.dart';
 
 // ignore: must_be_immutable

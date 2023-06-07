@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/colors.dart';
 
+// ignore: must_be_immutable
 class MenuItem extends StatelessWidget {
   IconData icon;
   String title;

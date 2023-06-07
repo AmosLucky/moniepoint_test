@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/colors.dart';
-import 'package:moniepoint_test/repos/product_repo.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class ProductImage extends StatefulWidget {
@@ -15,7 +13,7 @@ class ProductImage extends StatefulWidget {
 class _ProductImageState extends State<ProductImage> {
   @override
   Widget build(BuildContext context) {
-    ProductRepo productRepo = context.watch<ProductRepo>();
+    // ProductRepo productRepo = context.watch<ProductRepo>();
     return Stack(
       children: [
         Container(

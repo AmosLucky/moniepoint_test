@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/colors.dart';
 import 'package:moniepoint_test/models/product.dart';
+import 'package:moniepoint_test/repos/util_repo.dart';
+import 'package:moniepoint_test/screens/product_details.dart';
 import 'package:moniepoint_test/widgets/price_widget.dart';
 import 'package:moniepoint_test/widgets/product_category.dart';
 import 'package:moniepoint_test/widgets/product_imge.dart';
@@ -20,7 +22,11 @@ class SingleProduct extends StatefulWidget {
 class _SingleProductState extends State<SingleProduct> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: () {
+        UtilRepo()
+            .navigateToScreen(context, ProductDetails(product: widget.product));
+      },
       child: Column(
         children: [
           Container(
