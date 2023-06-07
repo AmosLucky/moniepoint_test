@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/repos/product_repo.dart';
 import 'package:moniepoint_test/widgets/product_title.dart';
@@ -6,6 +7,7 @@ import '../constants/colors.dart';
 import '../widgets/carouse_head.dart';
 import '../widgets/icon_badge.dart';
 import '../widgets/list_widgets.dart';
+import '../widgets/navigation_bar.dart';
 import '../widgets/search_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,30 +35,32 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(children: [
           Container(
-            height: 320,
+            height: 350,
             //color: Colors.amber,
-            child: const CarouselHead(),
+            child: FadeInUp(child: const CarouselHead()),
           ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            height: 60,
-            color: lightGrey,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                      child: ProductTitle(
-                    title: "Best Sale Product",
-                  )),
-                  (Text(
-                    "See more",
-                    style: TextStyle(
-                        color: lightBlue,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17),
-                  ))
-                ]),
+          FadeInUp(
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              height: 60,
+              color: lightGrey,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                        child: ProductTitle(
+                      title: "Best Sale Product",
+                    )),
+                    (Text(
+                      "See more",
+                      style: TextStyle(
+                          color: lightBlue,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17),
+                    ))
+                  ]),
+            ),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -77,12 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
 
-                return ListProducts(productMap: snapshot.data as List);
+                return FadeInUp(
+                    child: ListProducts(productMap: snapshot.data as List));
               },
             ),
           )
         ]),
       ),
+      bottomNavigationBar: navigationBar(),
     );
   }
 }

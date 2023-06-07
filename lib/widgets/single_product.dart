@@ -7,6 +7,7 @@ import 'package:moniepoint_test/widgets/price_widget.dart';
 import 'package:moniepoint_test/widgets/product_category.dart';
 import 'package:moniepoint_test/widgets/product_imge.dart';
 import 'package:moniepoint_test/widgets/product_title.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'card_rating.dart';
 
@@ -24,8 +25,15 @@ class _SingleProductState extends State<SingleProduct> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        UtilRepo()
-            .navigateToScreen(context, ProductDetails(product: widget.product));
+        Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.bottomToTop,
+                duration: Duration(milliseconds: 500),
+                child: ProductDetails(product: widget.product)));
+
+        // UtilRepo()
+        //     .navigateToScreen(context, ProductDetails(product: widget.product));
       },
       child: Column(
         children: [

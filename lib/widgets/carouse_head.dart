@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:moniepoint_test/constants/colors.dart';
 import 'package:moniepoint_test/models/product.dart';
 import 'package:moniepoint_test/repos/product_repo.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '../repos/util_repo.dart';
@@ -26,7 +27,7 @@ class _CarouselHeadState extends State<CarouselHead> {
     return Column(children: [
       CarouselSlider(
         options: CarouselOptions(
-            height: size.height / 4,
+            height: size.height / 3.5,
             viewportFraction: 1.0,
             enlargeCenterPage: true,
             autoPlay: true,
@@ -57,8 +58,15 @@ class _CarouselHeadState extends State<CarouselHead> {
                       child: MaterialButton(
                         //shape: const StadiumBorder(),
                         onPressed: () {
-                          UtilRepo().navigateToScreen(context,
-                              ProductDetails(product: Product.fromJson(item)));
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.bottomToTop,
+                                  duration: Duration(milliseconds: 500),
+                                  child: ProductDetails(
+                                      product: Product.fromJson(item))));
+                          // UtilRepo().navigateToScreen(context,
+                          //     ProductDetails(product: Product.fromJson(item)));
                         },
                         child: Text("Book Now"),
                         textColor: whiteColor,

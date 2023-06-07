@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
@@ -8,10 +9,12 @@ import 'package:moniepoint_test/widgets/product_category.dart';
 import 'package:moniepoint_test/widgets/product_title.dart';
 import 'package:number_paginator/number_paginator.dart';
 
+import '../animations/slide_up.dart';
 import '../repos/product_repo.dart';
 import '../widgets/bottom_widget.dart';
 import '../widgets/detailed_thumbnail.dart';
 import '../widgets/image_rating.dart';
+import '../widgets/list_item.dart';
 import '../widgets/list_widgets.dart';
 import '../widgets/rating_deails.dart';
 import '../widgets/rating_row.dart';
@@ -67,28 +70,99 @@ class _ProductDetailsState extends State<ProductDetails> {
             padding: EdgeInsets.symmetric(horizontal: 10),
             alignment: Alignment.centerLeft,
             child: Column(children: [
-              DetailedThumbNail(
-                images: widget.product.images,
-              ),
-              Container(
-                  alignment: Alignment.centerLeft,
-                  child: ProductCategory(text: widget.product.category)),
-              Container(
-                  alignment: Alignment.centerLeft,
-                  child: ProductTitle(
-                    title: widget.product.title,
-                    size: 20,
-                  )),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
-                child: RatingDetails(
-                  product: widget.product,
+              FadeInUp(
+                child: DetailedThumbNail(
+                  images: widget.product.images,
                 ),
               ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
-                height: 230,
-                color: Colors.amber,
+              FadeInUp(
+                child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: ProductCategory(text: widget.product.category)),
+              ),
+              FadeInUp(
+                child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: ProductTitle(
+                      title: widget.product.title,
+                      size: 20,
+                    )),
+              ),
+              FadeInUp(
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  child: RatingDetails(
+                    product: widget.product,
+                  ),
+                ),
+              ),
+              FadeInUp(
+                child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    height: 220,
+                    child: DefaultTabController(
+                      length: 2,
+                      child: Scaffold(
+                        appBar: AppBar(
+                          backgroundColor: whiteColor,
+                          foregroundColor: primaryColor,
+                          elevation: 0,
+                          toolbarHeight: 10,
+                          bottom: TabBar(
+                            labelColor: primaryColor,
+                            indicatorColor: primaryColor,
+                            tabs: const [
+                              Tab(
+                                text: "About item",
+                              ),
+                              Tab(
+                                text: "Reviews",
+                              ),
+                            ],
+                          ),
+                        ),
+                        body: TabBarView(children: [
+                          Container(
+                            margin: EdgeInsets.symmetric(vertical: 20),
+                            child: Column(children: [
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ListItem(),
+                                    ListItem(),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ListItem(),
+                                    ListItem(),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ListItem(),
+                                    ListItem(),
+                                  ],
+                                ),
+                              )
+                            ]),
+                          )
+                        ]),
+                      ),
+                    )),
               ),
               const Divider(),
               Container(
