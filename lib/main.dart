@@ -21,10 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-       ChangeNotifierProvider(create: (_) => ProductRepo()),
-
+        ChangeNotifierProvider(create: (_) => ProductRepo()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: "Raleway",
+        ),
         navigatorKey: navigatorKey,
         title: appName,
         home: const SplashScreen(),

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_test/repos/product_repo.dart';
+import 'package:moniepoint_test/widgets/price_widget.dart';
+import 'package:moniepoint_test/widgets/product_title.dart';
 
 import '../constants/colors.dart';
+import '../widgets/carouse_head.dart';
+import '../widgets/icon_badge.dart';
 import '../widgets/list_widgets.dart';
+import '../widgets/search_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,42 +24,65 @@ class _HomeScreenState extends State<HomeScreen> {
         toolbarHeight: 100,
         elevation: 0.0,
         backgroundColor: whiteColor,
+        foregroundColor: blackColor,
+        title: Row(children: [
+          const Expanded(child: SearchWidget()),
+          IconBadge(icon: Icons.shopping_basket_outlined, text: "1"),
+          IconBadge(icon: Icons.message_outlined, text: "9+")
+        ]),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(children: [
-            Container(
-              height: 280,
-              color: Colors.amber,
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: FutureBuilder(
-                future: ProductRepo().fetchProduct(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (snapshot.hasError) {
-                    return const Center(
-                      child: Text("An error occoured"),
-                    );
-                  } else if (!snapshot.hasData) {
-                    return const Center(
-                      child: Text("No data"),
-                    );
-                  }
+        child: Column(children: [
+          Container(
+            height: 320,
+            //color: Colors.amber,
+            child: const CarouselHead(),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            height: 60,
+            color: lightGrey,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                      child: ProductTitle(
+                    title: "Best Sale Product",
+                  )),
+                  (Text(
+                    "See more",
+                    style: TextStyle(
+                        color: lightBlue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17),
+                  ))
+                ]),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: FutureBuilder(
+              future: ProductRepo().fetchProduct(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return const Center(
+                    child: Text("An error occoured"),
+                  );
+                } else if (!snapshot.hasData) {
+                  return const Center(
+                    child: Text("No data"),
+                  );
+                }
 
-                  return ListProducts(productMap: snapshot.data as List);
-                },
-              ),
-            )
-          ]),
-        ),
+                return ListProducts(productMap: snapshot.data as List);
+              },
+            ),
+          )
+        ]),
       ),
     );
   }
