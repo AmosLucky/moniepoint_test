@@ -37,7 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.0
   provider:
   carousel_slider:
-  flutter_html:
+  flutter_widget_from_html:
+  percent_indicator: ^4.2.3
+  flutter_rating_bar: ^4.0.1
+  number_paginator: ^0.2.3
 
 dev_dependencies:
   flutter_test:
