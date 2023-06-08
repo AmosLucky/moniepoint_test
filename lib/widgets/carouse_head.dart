@@ -27,7 +27,7 @@ class _CarouselHeadState extends State<CarouselHead> {
     return Column(children: [
       CarouselSlider(
         options: CarouselOptions(
-            height: size.height / 3.5,
+            height: size.height / 4.3,
             viewportFraction: 1.0,
             enlargeCenterPage: true,
             autoPlay: true,

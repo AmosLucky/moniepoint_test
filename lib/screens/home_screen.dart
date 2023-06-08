@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           FadeInUp(
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
-              height: 60,
+              height: 70,
               color: lightGrey,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
